@@ -55,27 +55,27 @@ container.singleton(
       max: 20,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 2000,
-    }),
+    })
 );
 
 container.singleton(
   "userRepository",
-  () => new UserRepository(container.resolve("db")),
+  () => new UserRepository(container.resolve("db"))
 );
 
 container.singleton(
   "userService",
-  () => new UserService(container.resolve("userRepository")),
+  () => new UserService(container.resolve("userRepository"))
 );
 
 container.register(
   "userController",
-  () => new UserController(container.resolve("userService")),
+  () => new UserController(container.resolve("userService"))
 );
 
 container.singleton(
   "authService",
-  () => new AuthService(container.resolve("userRepository")),
+  () => new AuthService(container.resolve("userRepository"))
 );
 ```
 
@@ -167,7 +167,7 @@ const userSchema = new Schema<IUser>(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 // Indexes
@@ -194,7 +194,7 @@ export class OrderService {
       // Create order
       const orderResult = await client.query(
         "INSERT INTO orders (user_id, total) VALUES ($1, $2) RETURNING id",
-        [userId, calculateTotal(items)],
+        [userId, calculateTotal(items)]
       );
       const orderId = orderResult.rows[0].id;
 
@@ -202,13 +202,13 @@ export class OrderService {
       for (const item of items) {
         await client.query(
           "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ($1, $2, $3, $4)",
-          [orderId, item.productId, item.quantity, item.price],
+          [orderId, item.productId, item.quantity, item.price]
         );
 
         // Update inventory
         await client.query(
           "UPDATE products SET stock = stock - $1 WHERE id = $2",
-          [item.quantity, item.productId],
+          [item.quantity, item.productId]
         );
       }
 
@@ -275,7 +275,7 @@ export class AuthService {
     try {
       const payload = jwt.verify(
         refreshToken,
-        process.env.REFRESH_TOKEN_SECRET!,
+        process.env.REFRESH_TOKEN_SECRET!
       ) as { userId: string };
 
       const user = await this.userRepository.findById(payload.userId);
@@ -356,7 +356,7 @@ export function Cacheable(ttl: number = 300) {
   return function (
     target: any,
     propertyKey: string,
-    descriptor: PropertyDescriptor,
+    descriptor: PropertyDescriptor
   ) {
     const originalMethod = descriptor.value;
 
@@ -391,7 +391,7 @@ export class ApiResponse {
     res: Response,
     data: T,
     message?: string,
-    statusCode = 200,
+    statusCode = 200
   ) {
     return res.status(statusCode).json({
       status: "success",
@@ -413,7 +413,7 @@ export class ApiResponse {
     data: T[],
     page: number,
     limit: number,
-    total: number,
+    total: number
   ) {
     return res.json({
       status: "success",

@@ -99,7 +99,7 @@ fastify.post<{
   async (request, reply) => {
     const { name, email } = request.body;
     return { id: "123", name };
-  },
+  }
 );
 
 await fastify.listen({ port: 3000, host: "0.0.0.0" });
@@ -249,7 +249,7 @@ export class UserRepository {
   constructor(private db: Pool) {}
 
   async create(
-    userData: CreateUserDTO & { password: string },
+    userData: CreateUserDTO & { password: string }
   ): Promise<UserEntity> {
     const query = `
       INSERT INTO users (name, email, password)
@@ -333,7 +333,7 @@ declare global {
 export const authenticate = async (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   try {
     const token = req.headers.authorization?.replace("Bearer ", "");
@@ -468,7 +468,7 @@ const logger = pino({
 export const requestLogger = (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   const start = Date.now();
 
@@ -501,7 +501,7 @@ export class AppError extends Error {
   constructor(
     public message: string,
     public statusCode: number = 500,
-    public isOperational: boolean = true,
+    public isOperational: boolean = true
   ) {
     super(message);
     Object.setPrototypeOf(this, AppError.prototype);
@@ -512,7 +512,7 @@ export class AppError extends Error {
 export class ValidationError extends AppError {
   constructor(
     message: string,
-    public errors?: any[],
+    public errors?: any[]
   ) {
     super(message, 400);
   }
@@ -555,7 +555,7 @@ export const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
@@ -587,7 +587,7 @@ export const errorHandler = (
 
 // Async error wrapper
 export const asyncHandler = (
-  fn: (req: Request, res: Response, next: NextFunction) => Promise<any>,
+  fn: (req: Request, res: Response, next: NextFunction) => Promise<any>
 ) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
@@ -600,6 +600,7 @@ export const asyncHandler = (
 Node.js supports both SQL and NoSQL databases. Use connection pooling for all production databases.
 
 Key patterns covered in [references/advanced-patterns.md](references/advanced-patterns.md):
+
 - **PostgreSQL with connection pool** — `pg` Pool configuration and graceful shutdown
 - **MongoDB with Mongoose** — connection management and schema definition
 - **Transaction pattern** — `BEGIN`/`COMMIT`/`ROLLBACK` with `pg` client
