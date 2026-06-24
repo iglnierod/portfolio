@@ -9,10 +9,18 @@ const dictionaries = {
     },
     navigation: {
       languageLabel: "Cambiar idioma",
+      links: {
+        home: "Inicio",
+        experience: "Experiencia",
+        projects: "Proyectos",
+        contact: "Contacto",
+      },
+      resume: "Currículum",
     },
     hero: {
       eyebrow: "Portfolio full stack",
-      title: "Construyo productos web completos, del frontend a la infraestructura.",
+      title:
+        "Construyo productos web completos, del frontend a la infraestructura.",
       description:
         "Este proyecto ya está preparado para crecer con contenido localizado en español e inglés.",
       primaryCta: "Ver proyectos",
@@ -35,6 +43,13 @@ const dictionaries = {
     },
     navigation: {
       languageLabel: "Change language",
+      links: {
+        home: "Home",
+        experience: "Experience",
+        projects: "Projects",
+        contact: "Contact",
+      },
+      resume: "Resume",
     },
     hero: {
       eyebrow: "Full stack portfolio",

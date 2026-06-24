@@ -15,7 +15,9 @@ function getPreferredLocale(request: NextRequest) {
     .map((language) => language.split(";")[0].trim().toLowerCase());
 
   const preferredLocale = acceptedLanguages?.find((language) =>
-    locales.some((locale) => language === locale || language.startsWith(`${locale}-`)),
+    locales.some(
+      (locale) => language === locale || language.startsWith(`${locale}-`)
+    )
   );
 
   return preferredLocale?.split("-")[0] ?? defaultLocale;
@@ -24,7 +26,7 @@ function getPreferredLocale(request: NextRequest) {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const pathnameHasLocale = locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
 
   if (pathnameHasLocale) {
