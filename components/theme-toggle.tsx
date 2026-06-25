@@ -1,34 +1,45 @@
 "use client";
 
 import { Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
-function getDark() {
-  return document.documentElement.classList.contains("dark");
-}
-
-function subscribe(callback: () => void) {
-  window.addEventListener("theme-toggle", callback);
-  return () => window.removeEventListener("theme-toggle", callback);
+function subscribe() {
+  return () => {};
 }
 
 export function ThemeToggle() {
-  const dark = useSyncExternalStore(subscribe, getDark, () => false);
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
+  );
+  const { resolvedTheme, setTheme } = useTheme();
+
+  const dark = resolvedTheme === "dark";
 
   const toggle = () => {
-    const next = !dark;
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-    window.dispatchEvent(new Event("theme-toggle"));
+    setTheme(dark ? "light" : "dark");
   };
 
   return (
     <button
       onClick={toggle}
+      disabled={!mounted}
+      aria-label={
+        mounted ? `Switch to ${dark ? "light" : "dark"} mode` : "Toggle theme"
+      }
       className="rounded-full p-2 text-zinc-500 transition-colors duration-200 ease-out hover:cursor-pointer hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
-      suppressHydrationWarning
     >
-      {dark ? <Sun size={18} /> : <Moon size={18} />}
+      {mounted ? (
+        dark ? (
+          <Sun size={18} />
+        ) : (
+          <Moon size={18} />
+        )
+      ) : (
+        <span className="block size-[18px]" />
+      )}
     </button>
   );
 }

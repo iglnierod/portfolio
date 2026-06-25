@@ -24,6 +24,7 @@ Current site areas:
 - TypeScript with `strict` mode.
 - Tailwind CSS v4 with CSS-first theme tokens.
 - `lucide-react` for icons.
+- `next-themes` for no-flash class-based theme initialization and theme switching.
 - Geist and Geist Mono through `next/font/google`.
 - Prettier with `prettier-plugin-tailwindcss`.
 - `pnpm` is the expected package manager.
@@ -40,20 +41,20 @@ Run targeted checks after changes. For code edits, prefer at least `pnpm lint`. 
 
 ## Repository Map
 
-- `app/[locale]/layout.tsx`: Localized layout, metadata, font setup, theme init, locale validation.
+- `app/[locale]/layout.tsx`: Localized layout, metadata, font setup, `ThemeProvider`, locale validation.
 - `app/[locale]/page.tsx`: Main localized home page composition.
 - `app/(redirect)/page.tsx`: Redirects `/` to the default locale.
 - `app/(redirect)/layout.tsx`: Minimal layout for the root redirect route group.
 - `app/globals.css`: Tailwind import, dark variant, CSS theme variables, body dot background, shimmer CSS.
-- `components/layout/navbar.tsx`: Floating navbar, localized nav, resume CTA, theme toggle, flag locale switch.
-- `components/layout/hero.tsx`: Localized hero, hero CTAs, shimmer name.
-- `components/layout/about-me.tsx`: About Me section currently being built.
-- `components/layout/container.tsx`: Shared `max-w-6xl` content wrapper.
-- `components/layout/experience.tsx`: Empty future section file.
-- `components/layout/studies.tsx`: Empty future section file.
-- `components/layout/projects.tsx`: Empty future section file.
-- `components/layout/footer.tsx`: Empty future section file.
-- `components/theme-init.tsx`: Client theme initializer.
+- `components/sections/navbar.tsx`: Floating navbar, localized nav, resume CTA, theme toggle, flag locale switch.
+- `components/sections/hero.tsx`: Localized hero, hero CTAs, shimmer name.
+- `components/sections/about-me.tsx`: About Me section currently being built.
+- `components/sections/container.tsx`: Shared `max-w-6xl` content wrapper.
+- `components/sections/experience.tsx`: Empty future section file.
+- `components/sections/studies.tsx`: Empty future section file.
+- `components/sections/projects.tsx`: Empty future section file.
+- `components/sections/footer.tsx`: Empty future section file.
+- `components/theme-provider.tsx`: Client `next-themes` provider for pre-hydration theme initialization.
 - `components/theme-toggle.tsx`: Client dark/light toggle.
 - `components/shimmer-text.tsx`: Reusable shimmer text component.
 - `i18n/config.ts`: Locale list, default locale, locale names, type guard.
@@ -107,11 +108,12 @@ type Props = {
 
 The app uses class-based dark mode:
 
-- `.dark` is toggled on `<html>`.
+- `.dark` is applied to `<html>` by `next-themes` through `attribute="class"`.
 - Light variables are defined in `:root` in `app/globals.css`.
 - Dark variables are defined under `.dark`.
 - Tailwind v4 theme tokens are exposed with `@theme inline`.
 - The dark variant is configured with `@variant dark (&:where(.dark, .dark *));`.
+- `app/[locale]/layout.tsx` keeps `suppressHydrationWarning` on `<html>` because `next-themes` mutates the root class before hydration.
 
 Important theme tokens:
 
@@ -136,9 +138,11 @@ Design color rules:
 - Prefer zinc neutrals and project variables over saturated colors.
 - Prefer light-first Tailwind classes with `dark:` overrides.
 
-`components/theme-init.tsx` applies the persisted theme or OS preference on mount. It dispatches a custom `theme-toggle` event after changing the root class. Keep this client-component approach. A raw script inside a React layout caused a Next.js client-navigation warning and should not be reintroduced casually.
+Theme loading must not flash on first paint. The project uses `next-themes` instead of a manual `useLayoutEffect`, custom event, or inline `next/script` bootstrap. Do not reintroduce `components/theme-init.tsx` or a manual script in the layout for theme loading.
 
-`components/theme-toggle.tsx` uses `useSyncExternalStore` to subscribe to the `theme-toggle` event. It reads from `document.documentElement.classList`, writes `localStorage.theme`, toggles `.dark`, and dispatches the same event.
+`components/theme-provider.tsx` wraps localized page content with `ThemeProvider` from `next-themes`. Current provider settings are `attribute="class"`, `defaultTheme="system"`, `enableSystem`, and `enableColorScheme`.
+
+`components/theme-toggle.tsx` uses `useTheme` from `next-themes` to read `resolvedTheme` and call `setTheme`. It uses `useSyncExternalStore` for a hydration-safe mounted check because this repo's React lint rules reject synchronous `setState` inside an effect for mount flags.
 
 ## Design Guide
 
@@ -252,7 +256,7 @@ If the hover target must be the entire section, put `group` on `<section>` inste
 `LocaleLayout`
 
 - File: `app/[locale]/layout.tsx`.
-- Validates locale, sets `lang`, loads fonts, applies `suppressHydrationWarning`, renders `ThemeInit` and children.
+- Validates locale, sets `lang`, loads fonts, applies `suppressHydrationWarning`, and renders `ThemeProvider` around children.
 
 `RootPage`
 
@@ -274,37 +278,39 @@ If the hover target must be the entire section, put `group` on `<section>` inste
 
 `Container`
 
-- File: `components/layout/container.tsx`.
+- File: `components/sections/container.tsx`.
 - Shared content width: `mx-auto w-full max-w-6xl px-6`.
 - Accepts optional `className`.
 
 `NavBar`
 
-- File: `components/layout/navbar.tsx`.
+- File: `components/sections/navbar.tsx`.
 - Computes the alternate locale, flag source, resume href, and nav link list.
 - Renders fixed glass navigation.
 
 `Hero`
 
-- File: `components/layout/hero.tsx`.
+- File: `components/sections/hero.tsx`.
 - Renders localized hero copy and uses `ShimmerText` for the name.
 
 `AboutMe`
 
-- File: `components/layout/about-me.tsx`.
+- File: `components/sections/about-me.tsx`.
 - Renders the localized section title and hover-expanding underline.
-- Currently has an `OPEN_TO_WORK` local constant that should be used or removed when linting this file.
+- Uses a local `OPEN_TO_WORK` constant to choose the localized work-status badge copy.
 
-`ThemeInit`
+`ThemeProvider`
 
-- File: `components/theme-init.tsx`.
-- Applies the initial theme preference on the client.
+- File: `components/theme-provider.tsx`.
+- Wraps children with `next-themes` using class-based theme initialization.
+- Prevents first-load theme flash by letting `next-themes` apply the stored or system theme before hydration.
 
 `ThemeToggle`
 
 - File: `components/theme-toggle.tsx`.
-- Toggles theme and renders Sun or Moon icon.
-- Should have an accessible name if accessibility work is requested.
+- Uses `useTheme` from `next-themes` to toggle between light and dark.
+- Renders Sun or Moon after mount to avoid hydration mismatch.
+- Has an accessible name for the icon-only button.
 
 `ShimmerText`
 
@@ -323,9 +329,8 @@ Reference public files with root-relative paths, for example `/es.svg`.
 
 ## Known Current State And Cautions
 
-- `components/layout/experience.tsx`, `studies.tsx`, `projects.tsx`, and `footer.tsx` are empty placeholders.
-- `components/layout/about-me.tsx` is actively being edited.
-- `components/layout/about-me.tsx` currently declares `OPEN_TO_WORK`; if unused, lint may fail.
+- `components/sections/experience.tsx`, `studies.tsx`, `projects.tsx`, and `footer.tsx` are empty placeholders.
+- `components/sections/about-me.tsx` is actively being edited.
 - Hero secondary CTA currently points to `/cv-rodrigo-iglesias-nieto.pdf`, which does not match the existing public PDF filenames. If editing hero CTAs, resolve this intentionally.
 - Navbar nav link hrefs are currently placeholders (`#`) for sections not fully implemented.
 - The old hero image background idea was rejected. Keep the dot matrix background.
