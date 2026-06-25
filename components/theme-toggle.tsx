@@ -25,7 +25,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-full p-2 transition-colors hover:cursor-pointer"
+      className="rounded-full p-2 text-zinc-500 transition-colors duration-200 ease-out hover:cursor-pointer hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
       suppressHydrationWarning
     >
       {dark ? <Sun size={16} /> : <Moon size={16} />}

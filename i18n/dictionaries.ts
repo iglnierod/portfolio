@@ -3,14 +3,16 @@ import type { Locale } from "./config";
 const dictionaries = {
   es: {
     metadata: {
-      title: "Portfolio Full Stack",
+      title: "Portfolio Full-Stack",
       description:
-        "Portfolio profesional de perfil full stack, proyectos, experiencia y tecnologías.",
+        "Portfolio profesional full-stack con proyectos, experiencia y tecnologías.",
     },
     navigation: {
       languageLabel: "Cambiar idioma",
+      languageTitle: "Cambiar idioma",
       links: {
         home: "Inicio",
+        about: "Sobre mí",
         experience: "Experiencia",
         projects: "Proyectos",
         contact: "Contacto",
@@ -18,33 +20,28 @@ const dictionaries = {
       resume: "Currículum",
     },
     hero: {
-      eyebrow: "Portfolio full stack",
-      title:
-        "Construyo productos web completos, del frontend a la infraestructura.",
+      quote: "Código con propósito. Interfaces con intención.",
+      intro: "Hola, soy",
+      name: "Rodrigo Iglesias",
+      role: "Desarrollador web full-stack",
       description:
-        "Este proyecto ya está preparado para crecer con contenido localizado en español e inglés.",
+        "Construyo aplicaciones web prácticas y orientadas a los datos, de frontend a backend: interfaces limpias, APIs REST, paneles, mapas interactivos, autenticación, modelos de bases de datos y productos full-stack listos para desplegar.",
       primaryCta: "Ver proyectos",
-      secondaryCta: "Contactar",
-    },
-    sections: {
-      stackTitle: "Stack principal",
-      stackDescription:
-        "Next.js, React, TypeScript, APIs, bases de datos y despliegues modernos.",
-      workTitle: "Qué incluir aquí",
-      workDescription:
-        "Casos de estudio, experiencia profesional, proyectos destacados y enlaces de contacto.",
+      secondaryCta: "Conóceme",
     },
   },
   en: {
     metadata: {
-      title: "Full Stack Portfolio",
+      title: "Full-Stack Portfolio",
       description:
-        "Professional full stack portfolio covering projects, experience, and technologies.",
+        "Professional full-stack portfolio covering projects, experience, and technologies.",
     },
     navigation: {
       languageLabel: "Change language",
+      languageTitle: "Change language",
       links: {
         home: "Home",
+        about: "About me",
         experience: "Experience",
         projects: "Projects",
         contact: "Contact",
@@ -52,20 +49,14 @@ const dictionaries = {
       resume: "Resume",
     },
     hero: {
-      eyebrow: "Full stack portfolio",
-      title: "I build complete web products, from frontend to infrastructure.",
+      quote: "Code with purpose. Interfaces with intent.",
+      intro: "Hi, I'm",
+      name: "Rodrigo Iglesias",
+      role: "Full-Stack Web Developer",
       description:
-        "This project is now ready to grow with localized content in Spanish and English.",
+        "I build practical, data-driven web applications from frontend to backend: clean interfaces, REST APIs, dashboards, interactive maps, authentication, database models, and deployable full-stack products.",
       primaryCta: "View projects",
-      secondaryCta: "Contact",
-    },
-    sections: {
-      stackTitle: "Core stack",
-      stackDescription:
-        "Next.js, React, TypeScript, APIs, databases, and modern deployments.",
-      workTitle: "What to include here",
-      workDescription:
-        "Case studies, professional experience, featured projects, and contact links.",
+      secondaryCta: "Get to know me",
     },
   },
 } as const;

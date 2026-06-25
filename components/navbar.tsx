@@ -1,5 +1,7 @@
 import { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
+import Image from "next/image";
+import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 
 type NavBarProps = {
@@ -9,51 +11,62 @@ type NavBarProps = {
 
 export function NavBar({ content, locale }: NavBarProps) {
   const otherLocale = locale === "es" ? "en" : "es";
+  const localeFlagSrc = otherLocale === "es" ? "/es.svg" : "/gb.svg";
+  const resumeHref =
+    locale === "es"
+      ? "/CV_Full-Stack_Rodrigo_Iglesias_Nieto.pdf"
+      : "/EN_CV_Full-Stack_Rodrigo_Iglesias_Nieto.pdf";
+  const navLinks = [
+    { href: "#", label: content.links.about },
+    { href: "#", label: content.links.experience },
+    { href: "#", label: content.links.projects },
+    { href: "#", label: content.links.contact },
+  ];
 
   return (
-    <header className="border-border bg-background/70 fixed top-4 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-lg border px-6 py-3 backdrop-blur-xl backdrop-saturate-150">
-      <span className="text-foreground font-semibold">Rodrigo</span>
+    <header className="fixed top-4 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 items-center justify-between rounded-lg border border-zinc-200 bg-white/75 px-6 py-3 backdrop-blur-xl backdrop-saturate-150 dark:border-zinc-800 dark:bg-zinc-950/70">
+      <Link
+        href="/"
+        className="font-semibold text-zinc-950 transition-colors duration-200 ease-out hover:text-zinc-700 dark:text-zinc-50 dark:hover:text-zinc-300"
+      >
+        Rodrigo Iglesias
+      </Link>
       <nav className="hidden items-center gap-6 sm:flex">
-        <a
-          href="#"
-          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-        >
-          {content.links.home}
-        </a>
-        <a
-          href="#"
-          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-        >
-          {content.links.experience}
-        </a>
-        <a
-          href="#"
-          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-        >
-          {content.links.projects}
-        </a>
-        <a
-          href="#"
-          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-        >
-          {content.links.contact}
-        </a>
+        {navLinks.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            className="text-sm text-zinc-500 transition-colors duration-200 ease-out hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <div className="flex items-center gap-3">
         <a
-          href="#"
-          className="border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-full border px-4 py-1.5 text-sm transition-colors"
+          href={resumeHref}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full bg-zinc-950 px-4 py-1.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 ease-out hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
         >
           {content.resume}
         </a>
+        <div className="h-5 w-px bg-zinc-300/80 dark:bg-zinc-700/80" />
         <ThemeToggle />
-        <a
+        <Link
           href={`/${otherLocale}`}
-          className="bg-accent text-accent-foreground hover:bg-accent/80 rounded-full px-3 py-1.5 text-sm transition-colors"
+          className="rounded-md bg-zinc-100 p-1.5 transition-colors duration-200 ease-out hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
           aria-label={content.languageLabel}
+          title={content.languageTitle}
         >
-          {otherLocale.toUpperCase()}
-        </a>
+          <Image
+            src={localeFlagSrc}
+            alt=""
+            width={22}
+            height={22}
+            className="h-5.5 w-5.5 rounded-[3px] object-cover"
+          />
+        </Link>
       </div>
     </header>
   );
