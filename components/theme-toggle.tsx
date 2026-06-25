@@ -28,7 +28,7 @@ export function ThemeToggle() {
       className="rounded-full p-2 text-zinc-500 transition-colors duration-200 ease-out hover:cursor-pointer hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
       suppressHydrationWarning
     >
-      {dark ? <Sun size={16} /> : <Moon size={16} />}
+      {dark ? <Sun size={18} /> : <Moon size={18} />}
     </button>
   );
 }

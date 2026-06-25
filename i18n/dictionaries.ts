@@ -27,7 +27,27 @@ const dictionaries = {
       description:
         "Construyo aplicaciones web prácticas y orientadas a los datos, de frontend a backend: interfaces limpias, APIs REST, paneles, mapas interactivos, autenticación, modelos de bases de datos y productos full-stack listos para desplegar.",
       primaryCta: "Ver proyectos",
-      secondaryCta: "Conóceme",
+      secondaryCta: "Contáctame",
+    },
+    aboutMe: {
+      title: "Sobre mí",
+      openToWork: "Disponible para trabajar",
+      notOpenToWork: "No disponible actualmente",
+      paragraphs: [
+        "Soy Rodrigo Iglesias, desarrollador web full-stack enfocado en crear productos útiles, claros y preparados para crecer.",
+        "Trabajo de extremo a extremo: desde interfaces limpias y accesibles hasta APIs REST, autenticación, modelos de datos y despliegues. Me interesa especialmente transformar necesidades reales en soluciones prácticas y mantenibles.",
+        "Además del código, disfruto aprender nuevas tecnologías, entender el contexto del producto y colaborar con equipos que valoran la calidad, la comunicación y la mejora continua.",
+      ],
+      strengthsTitle: "Fortalezas clave",
+      strengths: [
+        "Full-stack",
+        "APIs REST",
+        "Interfaces limpias",
+        "Datos",
+        "Resolución de problemas",
+        "Aprendizaje continuo",
+      ],
+      imageAlt: "Rodrigo junto a una tigresa",
     },
   },
   en: {
@@ -41,7 +61,7 @@ const dictionaries = {
       languageTitle: "Change language",
       links: {
         home: "Home",
-        about: "About me",
+        about: "About",
         experience: "Experience",
         projects: "Projects",
         contact: "Contact",
@@ -56,7 +76,27 @@ const dictionaries = {
       description:
         "I build practical, data-driven web applications from frontend to backend: clean interfaces, REST APIs, dashboards, interactive maps, authentication, database models, and deployable full-stack products.",
       primaryCta: "View projects",
-      secondaryCta: "Get to know me",
+      secondaryCta: "Contact me",
+    },
+    aboutMe: {
+      title: "About me",
+      openToWork: "Open to work",
+      notOpenToWork: "Not available right now",
+      paragraphs: [
+        "I'm Rodrigo Iglesias, a full-stack web developer focused on building useful, clear products that are ready to grow.",
+        "I work end to end: from clean, accessible interfaces to REST APIs, authentication, data models, and deployments. I especially enjoy turning real needs into practical, maintainable solutions.",
+        "Beyond code, I enjoy learning new technologies, understanding product context, and collaborating with teams that value quality, communication, and continuous improvement.",
+      ],
+      strengthsTitle: "Key strengths",
+      strengths: [
+        "Full-stack",
+        "REST APIs",
+        "Clean interfaces",
+        "Data",
+        "Problem solving",
+        "Continuous learning",
+      ],
+      imageAlt: "Rodrigo next to a tigress",
     },
   },
 } as const;

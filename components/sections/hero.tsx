@@ -1,5 +1,7 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { ShimmerText } from "./shimmer-text";
+import { Container } from "./container";
+import { ShimmerText } from "../shimmer-text";
+import Link from "next/link";
 
 type HeroProps = {
   content: Dictionary["hero"];
@@ -7,9 +9,9 @@ type HeroProps = {
 
 export function Hero({ content }: HeroProps) {
   return (
-    <>
-      <section className="relative flex min-h-[80svh] items-center justify-center pt-24 pb-12">
-        <div className="mx-auto max-w-5xl px-6 text-center">
+    <section className="relative flex min-h-[80svh] items-center justify-center pt-24 pb-12">
+      <Container className="text-center">
+        <div className="mx-auto max-w-5xl">
           <p className="mb-6 text-sm text-zinc-600 italic md:text-base dark:text-zinc-400">
             &quot;{content.quote}&quot;
           </p>
@@ -28,25 +30,22 @@ export function Hero({ content }: HeroProps) {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
+            <Link
               href="#projects"
               className="rounded-sm bg-zinc-950 px-7 py-3 font-semibold text-white shadow-sm transition-colors duration-200 ease-out hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
               {content.primaryCta}
-            </a>
+            </Link>
 
-            <a
-              href="/cv-rodrigo-iglesias-nieto.pdf"
-              download
-              className="rounded-sm border border-zinc-300 px-7 py-3 font-semibold text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-900"
+            <Link
+              href="#contact"
+              className="rounded-sm border border-zinc-300 bg-white px-7 py-3 font-semibold text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:bg-zinc-900"
             >
               {content.secondaryCta}
-            </a>
+            </Link>
           </div>
         </div>
-      </section>
-
-      <div aria-hidden className="h-[24svh]" />
-    </>
+      </Container>
+    </section>
   );
 }
