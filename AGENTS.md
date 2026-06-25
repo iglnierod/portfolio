@@ -24,7 +24,7 @@ Current site areas:
 - TypeScript with `strict` mode.
 - Tailwind CSS v4 with CSS-first theme tokens.
 - `lucide-react` for icons.
-- `next-themes` for no-flash class-based theme initialization and theme switching.
+- `@teispace/next-themes` for no-flash class-based theme initialization and theme switching.
 - Geist and Geist Mono through `next/font/google`.
 - Prettier with `prettier-plugin-tailwindcss`.
 - `pnpm` is the expected package manager.
@@ -54,7 +54,7 @@ Run targeted checks after changes. For code edits, prefer at least `pnpm lint`. 
 - `components/sections/studies.tsx`: Empty future section file.
 - `components/sections/projects.tsx`: Empty future section file.
 - `components/sections/footer.tsx`: Empty future section file.
-- `components/theme-provider.tsx`: Client `next-themes` provider for pre-hydration theme initialization.
+- `components/theme-provider.tsx`: `@teispace/next-themes` provider for pre-hydration theme initialization.
 - `components/theme-toggle.tsx`: Client dark/light toggle.
 - `components/shimmer-text.tsx`: Reusable shimmer text component.
 - `i18n/config.ts`: Locale list, default locale, locale names, type guard.
@@ -108,12 +108,12 @@ type Props = {
 
 The app uses class-based dark mode:
 
-- `.dark` is applied to `<html>` by `next-themes` through `attribute="class"`.
+- `.dark` is applied to `<html>` by `@teispace/next-themes` through `attribute="class"`.
 - Light variables are defined in `:root` in `app/globals.css`.
 - Dark variables are defined under `.dark`.
 - Tailwind v4 theme tokens are exposed with `@theme inline`.
 - The dark variant is configured with `@variant dark (&:where(.dark, .dark *));`.
-- `app/[locale]/layout.tsx` keeps `suppressHydrationWarning` on `<html>` because `next-themes` mutates the root class before hydration.
+- `app/[locale]/layout.tsx` keeps `suppressHydrationWarning` on `<html>` because the theme provider mutates the root class before hydration.
 
 Important theme tokens:
 
@@ -138,11 +138,13 @@ Design color rules:
 - Prefer zinc neutrals and project variables over saturated colors.
 - Prefer light-first Tailwind classes with `dark:` overrides.
 
-Theme loading must not flash on first paint. The project uses `next-themes` instead of a manual `useLayoutEffect`, custom event, or inline `next/script` bootstrap. Do not reintroduce `components/theme-init.tsx` or a manual script in the layout for theme loading.
+Theme loading must not flash on first paint. The project uses `@teispace/next-themes` instead of a manual `useLayoutEffect`, custom event, or inline `next/script` bootstrap. Do not reintroduce `components/theme-init.tsx` or a manual script in the layout for theme loading.
 
-`components/theme-provider.tsx` wraps localized page content with `ThemeProvider` from `next-themes`. Current provider settings are `attribute="class"`, `defaultTheme="system"`, `enableSystem`, and `enableColorScheme`.
+Use `@teispace/next-themes`, not upstream `next-themes`. Upstream `next-themes@0.4.6` emits a React/Next.js 16 warning during client navigation because it renders a script tag inside a React component. The `@teispace/next-themes` fork fixes this by using server-inserted HTML for the anti-FOUC script.
 
-`components/theme-toggle.tsx` uses `useTheme` from `next-themes` to read `resolvedTheme` and call `setTheme`. It uses `useSyncExternalStore` for a hydration-safe mounted check because this repo's React lint rules reject synchronous `setState` inside an effect for mount flags.
+`components/theme-provider.tsx` wraps localized page content with `ThemeProvider` from `@teispace/next-themes`. Current provider settings are `attribute="class"`, `defaultTheme="system"`, `enableSystem`, `enableColorScheme`, and `storage="hybrid"`.
+
+`components/theme-toggle.tsx` uses `useTheme` from `@teispace/next-themes` to read `resolvedTheme` and call `setTheme`. It uses `useSyncExternalStore` for a hydration-safe mounted check because this repo's React lint rules reject synchronous `setState` inside an effect for mount flags.
 
 ## Design Guide
 
@@ -302,13 +304,13 @@ If the hover target must be the entire section, put `group` on `<section>` inste
 `ThemeProvider`
 
 - File: `components/theme-provider.tsx`.
-- Wraps children with `next-themes` using class-based theme initialization.
-- Prevents first-load theme flash by letting `next-themes` apply the stored or system theme before hydration.
+- Wraps children with `@teispace/next-themes` using class-based theme initialization.
+- Prevents first-load theme flash by letting `@teispace/next-themes` apply the stored or system theme before hydration.
 
 `ThemeToggle`
 
 - File: `components/theme-toggle.tsx`.
-- Uses `useTheme` from `next-themes` to toggle between light and dark.
+- Uses `useTheme` from `@teispace/next-themes` to toggle between light and dark.
 - Renders Sun or Moon after mount to avoid hydration mismatch.
 - Has an accessible name for the icon-only button.
 

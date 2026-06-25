@@ -1,6 +1,4 @@
-"use client";
-
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider as TeispaceThemeProvider } from "@teispace/next-themes";
 import type { ReactNode } from "react";
 
 type ThemeProviderProps = {
@@ -9,13 +7,14 @@ type ThemeProviderProps = {
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
-    <NextThemesProvider
+    <TeispaceThemeProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
       enableColorScheme
+      storage="hybrid"
     >
       {children}
-    </NextThemesProvider>
+    </TeispaceThemeProvider>
   );
 }
