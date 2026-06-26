@@ -10,14 +10,20 @@ const dictionaries = {
     navigation: {
       languageLabel: "Cambiar idioma",
       languageTitle: "Cambiar idioma",
+      menuLabel: "Navegación principal",
+      openMenuLabel: "Abrir menú",
+      closeMenuLabel: "Cerrar menú",
       links: {
         home: "Inicio",
         about: "Sobre mí",
+        techSkills: "Stack",
         experience: "Experiencia",
+        studies: "Estudios",
         projects: "Proyectos",
         contact: "Contacto",
       },
       resume: "Currículum",
+      resumeShort: "CV",
     },
     hero: {
       quote: "Código con propósito. Interfaces con intención.",
@@ -70,14 +76,20 @@ const dictionaries = {
     navigation: {
       languageLabel: "Change language",
       languageTitle: "Change language",
+      menuLabel: "Primary navigation",
+      openMenuLabel: "Open menu",
+      closeMenuLabel: "Close menu",
       links: {
         home: "Home",
         about: "About",
+        techSkills: "Stack",
         experience: "Experience",
+        studies: "Studies",
         projects: "Projects",
         contact: "Contact",
       },
       resume: "Resume",
+      resumeShort: "CV",
     },
     hero: {
       quote: "Code with purpose. Interfaces with intent.",
