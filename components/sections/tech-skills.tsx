@@ -1,5 +1,5 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "./container";
+import { Container } from "@/components/sections/container";
 import type { ComponentType, ReactElement, SVGProps } from "react";
 import {
   Android,

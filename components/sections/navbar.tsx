@@ -4,7 +4,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 

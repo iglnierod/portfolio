@@ -1,6 +1,6 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "./container";
-import { ShimmerText } from "../shimmer-text";
+import { Container } from "@/components/sections/container";
+import { ShimmerText } from "@/components/ui/shimmer-text";
 import Link from "next/link";
 
 type HeroProps = {

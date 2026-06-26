@@ -1,4 +1,4 @@
-import type { Locale } from "./config";
+import type { Locale } from "@/i18n/config";
 
 const dictionaries = {
   es: {
@@ -168,7 +168,7 @@ const dictionaries = {
           title:
             "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
           institution: "IES Anton Losada Diéguez",
-          location: "España",
+          location: "A Estrada",
           type: "Ciclo Formativo de Grado Superior",
           startDate: "Septiembre 2022",
           endDate: "Junio 2024",
@@ -327,7 +327,7 @@ const dictionaries = {
       title: "Studies",
       items: [
         {
-          title: "Higher Technician in Web Application Development",
+          title: "Associate Degree in Web Application Development",
           institution: "IES San Clemente",
           location: "Santiago de Compostela",
           type: "Higher Vocational Training",
@@ -364,9 +364,9 @@ const dictionaries = {
           ],
         },
         {
-          title: "Higher Technician in Multiplatform Application Development",
+          title: "Associate Degree in Multi-platform Application Development",
           institution: "IES Anton Losada Diéguez",
-          location: "Spain",
+          location: "A Estrada",
           type: "Higher Vocational Training",
           startDate: "September 2022",
           endDate: "June 2024",

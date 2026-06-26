@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "./container";
+import { Container } from "@/components/sections/container";
 import Image from "next/image";
 import Link from "next/link";
 

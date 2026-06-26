@@ -1,6 +1,6 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "./container";
-import { TimelineCard } from "./timeline-card";
+import { Container } from "@/components/sections/container";
+import { TimelineCard } from "@/components/ui/timeline-card";
 
 type Props = {
   content: Dictionary["experience"];
