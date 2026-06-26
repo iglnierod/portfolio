@@ -49,6 +49,17 @@ const dictionaries = {
       ],
       imageAlt: "Rodrigo junto a una tigresa",
     },
+    stack: {
+      title: "Skills Técnicas",
+      categories: {
+        programmingLanguages: "Lenguajes de programación",
+        frameworks: "Frameworks",
+        backendData: "Backend y datos",
+        securityWorkflowTesting: "Seguridad, flujo de trabajo y testing",
+        infrastructureDeployment: "Infraestructura y despliegue",
+        testingTools: "Testing y herramientas",
+      },
+    },
   },
   en: {
     metadata: {
@@ -97,6 +108,17 @@ const dictionaries = {
         "Continuous learning",
       ],
       imageAlt: "Rodrigo next to a tigress",
+    },
+    stack: {
+      title: "Technical Skills",
+      categories: {
+        programmingLanguages: "Programming languages",
+        frameworks: "Frameworks",
+        backendData: "Backend & Data",
+        securityWorkflowTesting: "Security & Workflow & Testing",
+        infrastructureDeployment: "Infrastructure & Deployment",
+        testingTools: "Testing & Tools",
+      },
     },
   },
 } as const;

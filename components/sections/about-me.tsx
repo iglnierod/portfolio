@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Container } from "./container";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   content: Dictionary["aboutMe"];
@@ -27,11 +28,13 @@ export function StrengthBadge({ children }: StrengthBadgeProps) {
 
 function WorkStatusBadge({ isOpen, label }: WorkStatusBadgeProps) {
   return (
-    <div
+    <Link
+      href={"https://www.linkedin.com/in/rodrigo-iglesias-nieto/"}
+      target="_blank"
       className={
         isOpen
-          ? "flex w-fit items-center gap-2 rounded-[5px] border border-green-700/25 bg-green-700/8 px-2.5 py-1 text-sm font-medium text-green-700 dark:border-green-400/25 dark:bg-green-400/10 dark:text-green-300"
-          : "text-muted-foreground flex w-fit items-center gap-2 rounded-[5px] border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-sm font-medium dark:border-zinc-700 dark:bg-zinc-900/80"
+          ? "flex w-fit items-center gap-2 rounded-[5px] border border-green-700/25 bg-green-700/8 px-2.5 py-1 text-sm font-medium text-green-700 transition-all duration-200 ease-out hover:-translate-y-0.5 dark:border-green-400/25 dark:bg-green-400/10 dark:text-green-300"
+          : "text-muted-foreground flex w-fit items-center gap-2 rounded-[5px] border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 dark:border-zinc-700 dark:bg-zinc-900/80"
       }
     >
       <span
@@ -42,7 +45,7 @@ function WorkStatusBadge({ isOpen, label }: WorkStatusBadgeProps) {
         }
       />
       <span>{label}</span>
-    </div>
+    </Link>
   );
 }
 
@@ -54,7 +57,7 @@ export function AboutMe({ content }: Props) {
 
   return (
     <section id="about">
-      <Container className="group flex flex-col gap-8 py-18">
+      <Container className="group flex flex-col gap-8 py-12">
         <div>
           <h3 className="text-4xl font-bold">{content.title}</h3>
           <span className="mt-3 block h-0.5 w-16 rounded-full bg-zinc-800 transition-all duration-300 ease-out group-hover:w-24 group-hover:bg-zinc-900 dark:bg-zinc-50 dark:group-hover:bg-zinc-100" />
@@ -82,7 +85,7 @@ export function AboutMe({ content }: Props) {
             </div>
 
             <div className="text-muted-foreground flex max-w-3xl flex-col gap-2.5">
-              <h4 className="text-muted-foreground font-mono font-semibold uppercase underline underline-offset-4">
+              <h4 className="text-muted-foreground font-mono font-semibold uppercase">
                 {content.strengthsTitle}
               </h4>
               <div className="flex flex-wrap gap-2">

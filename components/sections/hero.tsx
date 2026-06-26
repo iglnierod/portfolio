@@ -9,7 +9,7 @@ type HeroProps = {
 
 export function Hero({ content }: HeroProps) {
   return (
-    <section className="relative flex min-h-[80svh] items-center justify-center pt-24 pb-12">
+    <section className="relative flex min-h-svh items-center justify-center pt-24 pb-12">
       <Container className="text-center">
         <div className="mx-auto max-w-5xl">
           <p className="mb-6 text-sm text-zinc-600 italic md:text-base dark:text-zinc-400">

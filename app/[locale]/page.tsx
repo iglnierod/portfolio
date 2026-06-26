@@ -5,6 +5,7 @@ import { isLocale } from "@/i18n/config";
 import { Hero } from "@/components/sections/hero";
 import { NavBar } from "@/components/sections/navbar";
 import { AboutMe } from "@/components/sections/about-me";
+import { TechSkills } from "@/components/sections/tech-skills";
 
 type HomeProps = {
   params: Promise<{
@@ -26,6 +27,7 @@ export default async function Home({ params }: HomeProps) {
       <NavBar content={dictionary.navigation} locale={locale} />
       <Hero content={dictionary.hero} />
       <AboutMe content={dictionary.aboutMe} />
+      <TechSkills content={dictionary.stack} />
     </main>
   );
 }
