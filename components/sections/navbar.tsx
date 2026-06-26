@@ -31,7 +31,7 @@ export function NavBar({ content, locale }: NavBarProps) {
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-1rem)] max-w-5xl -translate-x-1/2 rounded-lg border border-zinc-200 bg-white/75 px-3 py-3 backdrop-blur-xl backdrop-saturate-150 sm:w-[calc(100%-2rem)] sm:px-4 dark:border-zinc-800 dark:bg-zinc-950/70">
+    <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-1rem)] max-w-5xl -translate-x-1/2 rounded-lg border border-zinc-200 bg-white/75 p-3 backdrop-blur-xl backdrop-saturate-150 sm:w-[calc(100%-2rem)] sm:px-4 dark:border-zinc-800 dark:bg-zinc-950/70">
       <div className="relative flex w-full items-center justify-between gap-3">
         <div className="flex shrink-0 items-center gap-2">
           <button

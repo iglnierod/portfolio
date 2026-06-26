@@ -14,6 +14,8 @@
   --shimmer-accent: #ad8a47;
   --dot: #d7d7d0;
   --dot-secondary: #c7cbc4;
+  --scrollbar-thumb: #77776f;
+  --scrollbar-thumb-hover: #5f5f58;
 }
 
 .dark {
@@ -29,6 +31,8 @@
   --shimmer-accent: #ffc455;
   --dot: #222222;
   --dot-secondary: #111112;
+  --scrollbar-thumb: #5a5a5a;
+  --scrollbar-thumb-hover: #737373;
 }
 
 @theme inline {
@@ -59,6 +63,35 @@ body {
   background-size: 10px 10px;
   image-rendering: pixelated;
   color: var(--foreground);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: var(--scrollbar-thumb);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .t-shimmer {
