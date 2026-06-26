@@ -69,7 +69,7 @@ export function AboutMe({ content }: Props) {
           </div>
 
           <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-2">
-            <div className="flex max-w-3xl flex-col gap-4 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+            <div className="text-body flex max-w-3xl flex-col gap-4 leading-8 text-zinc-700 dark:text-zinc-300">
               {content.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}

@@ -6,6 +6,8 @@ import { Hero } from "@/components/sections/hero";
 import { NavBar } from "@/components/sections/navbar";
 import { AboutMe } from "@/components/sections/about-me";
 import { TechSkills } from "@/components/sections/tech-skills";
+import { Experience } from "@/components/sections/experience";
+import { Studies } from "@/components/sections/studies";
 
 type HomeProps = {
   params: Promise<{
@@ -28,6 +30,8 @@ export default async function Home({ params }: HomeProps) {
       <Hero content={dictionary.hero} />
       <AboutMe content={dictionary.aboutMe} />
       <TechSkills content={dictionary.stack} />
+      <Experience content={dictionary.experience} />
+      <Studies content={dictionary.studies} />
     </main>
   );
 }
