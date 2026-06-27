@@ -66,6 +66,112 @@ const dictionaries = {
         testingTools: "Testing y herramientas",
       },
     },
+    projects: {
+      title: "Proyectos",
+      online: "Online",
+      offline: "Offline",
+      items: [
+        {
+          name: "Predicciones Mundial 2026",
+          description:
+            "Web app para hacer para hacer diferentes predicciones del mundial de fútbol y competir con amigos",
+          github: "https://github.com/iglnierod/predicciones-mundial-26",
+          website: "https://predicciones-mundial-26.vercel.app",
+          stack: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Supabase",
+            "Vercel",
+            "Tailwind",
+            "Google Auth",
+            "OpenCode",
+          ],
+          readMore: "Leer más",
+        },
+        {
+          name: "Cesta Galega",
+          description:
+            "Tienda online centrada en pequeños comercios gallegos con productos, carrito, roles, pagos simulados...",
+          github: "https://github.com/iglnierod/proyecto-final-cesta-galega",
+          website: "https://proyecto-final-cesta-galega.vercel.app/",
+          stack: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Supabase",
+            "Prisma",
+            "JWT",
+            "GitHub Actions",
+            "Docker",
+            "API REST",
+            "Vercel",
+            "Agile/Kanban",
+          ],
+          readMore: "Leer más",
+        },
+        {
+          name: "GameArchive",
+          description:
+            "Aplicación de escritorio para gestionar, buscar y organizar videojuegos con perfiles de usuario, listas, favoritos, valoraciones y datos obtenidos desde APIs externas.",
+          github: "https://github.com/iglnierod/GameArchive",
+          website: "https://iglnierod.github.io/GameArchive/",
+          stack: [
+            "Java",
+            "Java Swing",
+            "Maven",
+            "PostgreSQL",
+            "Supabase",
+            "MVC",
+            "IGDB API",
+            "Unirest",
+            "FlatLaf",
+            "BCrypt",
+            "NSIS",
+          ],
+          readMore: "Leer más",
+        },
+        {
+          name: "Plutonium T6 Docker Server",
+          description:
+            "Runner basado en Docker para desplegar servidores dedicados de Plutonium T6 / Call of Duty: Black Ops II de forma reproducible, configurable y aislada.",
+          github: "https://github.com/iglnierod/plutonium-t6-docker",
+          website: null,
+          stack: [
+            "Docker",
+            "Docker Compose",
+            "Linux",
+            "Wine",
+            "Shell Script",
+            "Bash",
+            "Debian",
+            "Server Config",
+            "Networking",
+            "Dedicated Servers",
+          ],
+          readMore: "Leer más",
+        },
+        {
+          name: "Gitale Discord Bot",
+          description:
+            "Bot de Discord para administrar desde comandos un servicio de servidor alojado en Linux, automatizando tareas de control y gestión del servidor.",
+          github: "https://github.com/iglnierod/gitale-discord-bot",
+          website: null,
+          stack: [
+            "JavaScript",
+            "Node.js",
+            "discord.js",
+            "Discord API",
+            "dotenv",
+            "Linux",
+            "Ubuntu Server",
+            "Service Management",
+            "Automation",
+          ],
+          readMore: "Leer más",
+        },
+      ],
+    },
     experience: {
       title: "Experiencia",
       items: [
@@ -126,14 +232,16 @@ const dictionaries = {
     },
     studies: {
       title: "Estudios",
+      averageGradeLabel: "Nota media",
       items: [
         {
-          title: "Técnico Superior en Desarrollo de Aplicaciones Web",
+          title: "Técnico Superior en Desarrollo de Aplicaciones Web (DAW)",
           institution: "IES San Clemente",
           location: "Santiago de Compostela",
           type: "Ciclo Formativo de Grado Superior",
           startDate: "Septiembre 2024",
           endDate: "Diciembre 2025",
+          averageGrade: "8,5/10",
           body: [
             "Formación especializada en el desarrollo de aplicaciones web, combinando frontend, backend, bases de datos y despliegue de servicios.",
             "Desarrollo de interfaces web dinámicas, componentes reutilizables, formularios y aplicaciones conectadas a servicios y APIs.",
@@ -166,12 +274,13 @@ const dictionaries = {
         },
         {
           title:
-            "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
+            "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
           institution: "IES Anton Losada Diéguez",
           location: "A Estrada",
           type: "Ciclo Formativo de Grado Superior",
           startDate: "Septiembre 2022",
           endDate: "Junio 2024",
+          averageGrade: "8,92/10",
           body: [
             "Formación orientada al desarrollo de aplicaciones multiplataforma, programación orientada a objetos, bases de datos y lógica de negocio.",
             "Desarrollo de aplicaciones conectadas a bases de datos, trabajando con modelos de datos, consultas SQL y operaciones CRUD.",
@@ -265,6 +374,22 @@ const dictionaries = {
         testingTools: "Testing & Tools",
       },
     },
+    projects: {
+      title: "Projects",
+      online: "Online",
+      offline: "Offline",
+      items: [
+        {
+          name: "World Cup 2026 Predictions",
+          description:
+            "Web app for making different football World Cup predictions and competing with friends.",
+          github: "https://github.com/iglnierod/predicciones-mundial-26",
+          website: "#",
+          stack: ["Next.js", "React", "TypeScript", "Supabase", "Vercel"],
+          readMore: "Read more",
+        },
+      ],
+    },
     experience: {
       title: "Experience",
       items: [
@@ -325,6 +450,7 @@ const dictionaries = {
     },
     studies: {
       title: "Studies",
+      averageGradeLabel: "Average grade",
       items: [
         {
           title: "Associate Degree in Web Application Development",
@@ -333,6 +459,7 @@ const dictionaries = {
           type: "Higher Vocational Training",
           startDate: "September 2024",
           endDate: "December 2025",
+          averageGrade: "--/10",
           body: [
             "Specialized training in web application development, combining frontend, backend, databases, and service deployment.",
             "Development of dynamic web interfaces, reusable components, forms, and applications connected to services and APIs.",
@@ -370,6 +497,7 @@ const dictionaries = {
           type: "Higher Vocational Training",
           startDate: "September 2022",
           endDate: "June 2024",
+          averageGrade: "--/10",
           body: [
             "Training focused on multiplatform application development, object-oriented programming, databases, and business logic.",
             "Development of applications connected to databases, working with data models, SQL queries, and CRUD operations.",

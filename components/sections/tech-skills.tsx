@@ -143,7 +143,7 @@ const techCategories: TechCategory[] = [
     technologies: [
       { name: "Git", icon: Git },
       { name: "GitHub", icon: GitHubLight, darkIcon: GitHubDark },
-      { name: "Opencode", icon: OpenCodeDark, darkIcon: OpenCodeLight },
+      { name: "OpenCode", icon: OpenCodeDark, darkIcon: OpenCodeLight },
       { name: "AI Agents", icon: OpenAILight, darkIcon: OpenAIDark },
       { name: "Postman", icon: Postman },
       { name: "GitLab", icon: GitLab },

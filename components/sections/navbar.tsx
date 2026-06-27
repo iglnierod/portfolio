@@ -24,9 +24,9 @@ export function NavBar({ content, locale }: NavBarProps) {
   const navLinks = [
     { href: "#about", label: content.links.about },
     { href: "#stack", label: content.links.techSkills },
+    { href: "#projects", label: content.links.projects },
     { href: "#experience", label: content.links.experience },
     { href: "#studies", label: content.links.studies },
-    { href: "#projects", label: content.links.projects },
     { href: "#contact", label: content.links.contact },
   ];
 

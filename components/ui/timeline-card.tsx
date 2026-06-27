@@ -5,6 +5,7 @@ type TimelineCardProps = {
   dates: string;
   body: readonly string[];
   skills?: readonly string[];
+  averageGrade?: string;
 };
 
 export function TimelineCard({
@@ -14,7 +15,10 @@ export function TimelineCard({
   dates,
   body,
   skills,
+  averageGrade,
 }: TimelineCardProps) {
+  const hasHeaderExtras = Boolean(averageGrade);
+
   return (
     <article className="group/card rounded border border-zinc-200/80 bg-zinc-50/70 p-5 backdrop-blur transition-colors duration-300 hover:border-zinc-300 hover:bg-zinc-50/90 dark:border-zinc-800/80 dark:bg-zinc-950/20 dark:hover:border-zinc-700 dark:hover:bg-zinc-950/40">
       <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
@@ -30,11 +34,21 @@ export function TimelineCard({
           </span>
         </div>
 
-        <p className="text-body order-3 flex min-w-0 items-center self-center text-zinc-600 dark:text-zinc-400">
+        {averageGrade ? (
+          <span className="text-muted-foreground order-3 inline-flex w-fit items-center rounded border border-zinc-200/80 bg-zinc-50/80 px-2.5 py-1 text-[12px] font-medium transition-colors duration-200 hover:border-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 sm:col-start-1 sm:row-start-2 sm:self-center dark:border-zinc-800/80 dark:bg-zinc-700/20 dark:hover:border-zinc-600 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100">
+            {averageGrade}
+          </span>
+        ) : null}
+
+        <p
+          className={`text-body order-5 flex min-w-0 items-center self-center text-zinc-600 dark:text-zinc-400 ${hasHeaderExtras ? "sm:col-start-1 sm:row-start-3" : ""}`}
+        >
           <span>{detail}</span>
         </p>
 
-        <p className="text-body order-4 self-center text-zinc-600 sm:justify-self-end dark:text-zinc-400">
+        <p
+          className={`text-body order-6 self-center text-zinc-600 sm:justify-self-end dark:text-zinc-400 ${hasHeaderExtras ? "sm:col-start-2 sm:row-start-3" : ""}`}
+        >
           {dates}
         </p>
       </div>

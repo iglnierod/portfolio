@@ -25,6 +25,7 @@ export function Studies({ content }: Props) {
               dates={`${study.startDate} - ${study.endDate}`}
               body={study.body}
               skills={study.skills}
+              averageGrade={`${content.averageGradeLabel}: ${study.averageGrade}`}
             />
           ))}
         </div>
