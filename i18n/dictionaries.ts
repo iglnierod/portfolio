@@ -71,6 +71,8 @@ const dictionaries = {
       online: "Online",
       offline: "Offline",
       moreStack: "+ Más",
+      previousProject: "Proyecto anterior",
+      nextProject: "Proyecto siguiente",
       items: [
         {
           name: "Predicciones Mundial 2026",
@@ -361,13 +363,15 @@ const dictionaries = {
       online: "Online",
       offline: "Offline",
       moreStack: "+ More",
+      previousProject: "Previous project",
+      nextProject: "Next project",
       items: [
         {
           name: "World Cup 2026 Predictions",
           description:
             "Web app for making different football World Cup predictions and competing with friends.",
           github: "https://github.com/iglnierod/predicciones-mundial-26",
-          website: "#",
+          website: "https://predicciones-mundial-26.vercel.app",
           stack: [
             "Next.js",
             "React",
@@ -375,6 +379,70 @@ const dictionaries = {
             "Supabase",
             "Vercel",
             "Tailwind",
+          ],
+          readMore: "Read more",
+        },
+        {
+          name: "Cesta Galega",
+          description:
+            "Online store focused on small Galician businesses, with products, cart, roles, and simulated payments.",
+          github: "https://github.com/iglnierod/proyecto-final-cesta-galega",
+          website: "https://proyecto-final-cesta-galega.vercel.app/",
+          stack: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Supabase",
+            "Prisma",
+            "JWT",
+          ],
+          readMore: "Read more",
+        },
+        {
+          name: "GameArchive",
+          description:
+            "Desktop app to manage, search, and organize video games with user profiles, lists, favorites, ratings, and data from external APIs.",
+          github: "https://github.com/iglnierod/GameArchive",
+          website: "https://iglnierod.github.io/GameArchive/",
+          stack: [
+            "Java",
+            "Java Swing",
+            "Maven",
+            "PostgreSQL",
+            "Supabase",
+            "MVC",
+          ],
+          readMore: "Read more",
+        },
+        {
+          name: "Plutonium T6 Docker Server",
+          description:
+            "Docker-based runner for deploying Plutonium T6 / Call of Duty: Black Ops II dedicated servers in a reproducible, configurable, isolated way.",
+          github: "https://github.com/iglnierod/plutonium-t6-docker",
+          website: null,
+          stack: [
+            "Docker",
+            "Docker Compose",
+            "Linux",
+            "Wine",
+            "Shell Script",
+            "Bash",
+          ],
+          readMore: "Read more",
+        },
+        {
+          name: "Gitale Discord Bot",
+          description:
+            "Discord bot for managing a Linux-hosted server service through commands, automating server control and administration tasks.",
+          github: "https://github.com/iglnierod/gitale-discord-bot",
+          website: null,
+          stack: [
+            "JavaScript",
+            "Node.js",
+            "discord.js",
+            "Discord API",
+            "dotenv",
+            "Linux",
           ],
           readMore: "Read more",
         },

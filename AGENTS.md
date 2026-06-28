@@ -52,8 +52,9 @@ Run targeted checks after changes. For code edits, prefer at least `pnpm lint`. 
 - `components/sections/container.tsx`: Shared `max-w-6xl` content wrapper.
 - `components/sections/experience.tsx`: Empty future section file.
 - `components/sections/studies.tsx`: Empty future section file.
-- `components/sections/projects.tsx`: Empty future section file.
+- `components/sections/projects.tsx`: Projects section wrapper and localized carousel placement.
 - `components/sections/footer.tsx`: Empty future section file.
+- `components/ui/`: Reusable UI components shared by sections, including project cards, carousel UI, timeline cards, theme toggle, and shimmer text.
 - `components/theme-provider.tsx`: `@teispace/next-themes` provider for pre-hydration theme initialization.
 - `components/theme-toggle.tsx`: Client dark/light toggle.
 - `components/shimmer-text.tsx`: Reusable shimmer text component.
