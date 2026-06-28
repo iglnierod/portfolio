@@ -73,11 +73,14 @@ export function NavBar({ content, locale }: NavBarProps) {
             target="_blank"
             rel="noreferrer"
             aria-label={content.resume}
-            className="inline-flex items-center gap-0.5 rounded-full bg-zinc-950 px-2.5 py-1.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 ease-out hover:bg-zinc-800 sm:px-4 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
+            className="group/cv inline-flex items-center gap-0.5 rounded-full bg-zinc-950 px-2.5 py-1.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 ease-out hover:bg-zinc-800 sm:px-4 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
             <span className="sm:hidden">{content.resumeShort}</span>
             <span className="hidden sm:inline">{content.resume}</span>
-            <ArrowUpRight size={16} />
+            <ArrowUpRight
+              size={16}
+              className="transition duration-300 ease-in-out group-hover/cv:translate-x-0.5 group-hover/cv:-translate-y-0.5"
+            />
           </Link>
           <div className="hidden h-5 w-px bg-zinc-300/80 sm:block dark:bg-zinc-700/80" />
           <ThemeToggle />
