@@ -1,5 +1,5 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "@/components/sections/container";
+import { Container } from "@/components/ui/container";
 import { TimelineCard } from "@/components/ui/timeline-card";
 
 type Props = {

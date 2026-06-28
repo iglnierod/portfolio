@@ -1,5 +1,5 @@
 import { Dictionary } from "@/i18n/dictionaries";
-import { Container } from "@/components/sections/container";
+import { Container } from "@/components/ui/container";
 import { ShimmerText } from "@/components/ui/shimmer-text";
 import Link from "next/link";
 

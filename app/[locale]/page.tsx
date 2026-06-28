@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { Hero } from "@/components/sections/hero";
-import { NavBar } from "@/components/sections/navbar";
+import { NavBar } from "@/components/layout/navbar";
 import { AboutMe } from "@/components/sections/about-me";
 import { TechSkills } from "@/components/sections/tech-skills";
 import { Experience } from "@/components/sections/experience";
