@@ -41,16 +41,16 @@ export function Projects({ content }: Props) {
             return (
               <article
                 key={project.github}
-                className="group/card flex min-h-[420px] flex-col rounded border border-zinc-200/80 bg-zinc-50/70 p-5 backdrop-blur transition-colors duration-300 hover:border-zinc-300 hover:bg-zinc-50/90 dark:border-zinc-800/80 dark:bg-zinc-950/20 dark:hover:border-zinc-700 dark:hover:bg-zinc-950/40"
+                className="group/card flex min-h-87.5 flex-col rounded border border-zinc-200/80 bg-zinc-50/70 p-5 backdrop-blur transition-colors duration-300 hover:border-zinc-300 hover:bg-zinc-50/90 dark:border-zinc-800/80 dark:bg-zinc-950/20 dark:hover:border-zinc-700 dark:hover:bg-zinc-950/40"
               >
-                <div className="flex min-h-16 items-start justify-between gap-4">
+                <div className="flex min-h-14 items-start justify-between gap-4">
                   <h4 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
                     {project.name}
                   </h4>
 
                   {isOnline ? (
                     <Link
-                      href={project.website}
+                      href={project.website ?? "#"}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`${project.name} ${content.online}`}
@@ -62,23 +62,28 @@ export function Projects({ content }: Props) {
                   )}
                 </div>
 
-                <p className="text-body mt-5 min-h-28 text-zinc-600 dark:text-zinc-400">
+                <p className="text-body mt-4 min-h-24 text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
 
-                <ul className="mt-5 flex min-h-24 flex-wrap content-end items-end justify-start gap-1.5">
-                  {project.stack.map((tech) => (
+                <ul className="mt-auto flex min-h-14 flex-wrap content-end items-end justify-start gap-1.5 overflow-hidden pt-4">
+                  {project.stack.slice(0, 6).map((tech) => (
                     <li key={tech}>
-                      <span className="text-muted-foreground inline-flex items-center rounded border border-zinc-200/80 bg-zinc-50/80 px-2 py-0.5 text-[11px] font-medium transition-colors duration-200 hover:border-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800/80 dark:bg-zinc-700/20 dark:hover:border-zinc-600 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100">
+                      <span className="text-muted-foreground inline-flex shrink-0 items-center rounded border border-zinc-200/80 bg-zinc-50/80 px-2 py-0.5 text-[11px] font-medium whitespace-nowrap transition-colors duration-200 hover:border-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800/80 dark:bg-zinc-700/20 dark:hover:border-zinc-600 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100">
                         {tech}
                       </span>
                     </li>
                   ))}
+                  <li>
+                    <span className="inline-flex shrink-0 items-center rounded border border-zinc-300/80 bg-zinc-100/80 px-2 py-0.5 text-[11px] font-medium whitespace-nowrap text-zinc-700 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-200/80 hover:text-zinc-950 dark:border-zinc-700/80 dark:bg-zinc-800/60 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50">
+                      {content.moreStack}
+                    </span>
+                  </li>
                 </ul>
 
                 <div className="mt-4 h-px w-full bg-zinc-200/80 dark:bg-zinc-800/80" />
 
-                <div className="mt-auto flex items-center justify-between gap-4 pt-5">
+                <div className="flex items-center justify-between gap-4 pt-4">
                   <Link
                     href={project.github}
                     target="_blank"
