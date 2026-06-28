@@ -26,7 +26,16 @@ export function ProjectCard({ project, content }: Props) {
             : "h-1.5 w-1.5 rounded-full border border-current"
         }
       />
-      {isOnline ? content.online : content.offline}
+      <span className="inline-flex items-center gap-0.5">
+        {isOnline ? content.online : content.offline}
+        {isOnline ? (
+          <ArrowUpRight
+            aria-hidden="true"
+            size={14}
+            className="transition-transform duration-200 group-hover/status:translate-x-0.5 group-hover/status:-translate-y-0.5"
+          />
+        ) : null}
+      </span>
     </span>
   );
 
@@ -43,6 +52,7 @@ export function ProjectCard({ project, content }: Props) {
             target="_blank"
             rel="noreferrer"
             aria-label={`${project.name} ${content.online}`}
+            className="group/status"
           >
             {statusBadge}
           </Link>
