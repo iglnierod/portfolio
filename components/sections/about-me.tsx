@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Container } from "@/components/ui/container";
+import { Languages } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,6 +19,11 @@ type WorkStatusBadgeProps = {
   label: string;
 };
 
+type InfoBadgeProps = {
+  children: ReactNode;
+  icon: ReactNode;
+};
+
 export function StrengthBadge({ children }: StrengthBadgeProps) {
   return (
     <span className="text-muted-foreground rounded-[5px] border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-zinc-500 hover:text-zinc-900 motion-reduce:hover:translate-y-0 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:border-zinc-400 dark:hover:text-zinc-100">
@@ -31,6 +37,7 @@ function WorkStatusBadge({ isOpen, label }: WorkStatusBadgeProps) {
     <Link
       href={"https://www.linkedin.com/in/rodrigo-iglesias-nieto/"}
       target="_blank"
+      rel="noreferrer"
       className={
         isOpen
           ? "flex w-fit items-center gap-2 rounded-[5px] border border-green-700/25 bg-green-700/8 px-2.5 py-1 text-sm font-medium text-green-700 transition-all duration-200 ease-out hover:-translate-y-0.5 dark:border-green-400/25 dark:bg-green-400/10 dark:text-green-300"
@@ -49,6 +56,28 @@ function WorkStatusBadge({ isOpen, label }: WorkStatusBadgeProps) {
   );
 }
 
+function LocationIcon() {
+  return (
+    <span
+      aria-hidden="true"
+      className="size-3.5 shrink-0 bg-current"
+      style={{
+        mask: "url(/geo-alt-fill.svg) center / contain no-repeat",
+        WebkitMask: "url(/geo-alt-fill.svg) center / contain no-repeat",
+      }}
+    />
+  );
+}
+
+function InfoBadge({ children, icon }: InfoBadgeProps) {
+  return (
+    <span className="text-muted-foreground flex w-fit items-center gap-2 rounded-[5px] border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-zinc-500 hover:text-zinc-900 motion-reduce:hover:translate-y-0 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:border-zinc-400 dark:hover:text-zinc-100">
+      {icon}
+      <span>{children}</span>
+    </span>
+  );
+}
+
 export function AboutMe({ content }: Props) {
   const OPEN_TO_WORK = true;
   const workStatusLabel = OPEN_TO_WORK
@@ -57,15 +86,24 @@ export function AboutMe({ content }: Props) {
 
   return (
     <section id="about">
-      <Container className="group flex flex-col gap-8 py-12">
+      <Container className="group flex flex-col gap-6 py-12">
         <div>
           <h3 className="text-4xl font-bold">{content.title}</h3>
           <span className="mt-3 block h-0.5 w-16 rounded-full bg-zinc-800 transition-all duration-300 ease-out group-hover:w-24 group-hover:bg-zinc-900 dark:bg-zinc-50 dark:group-hover:bg-zinc-100" />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-x-14 lg:gap-y-5">
-          <div className="lg:col-start-1 lg:row-start-1">
+          <div className="flex flex-wrap items-center gap-2 lg:col-start-1 lg:row-start-1">
             <WorkStatusBadge isOpen={OPEN_TO_WORK} label={workStatusLabel} />
+            <InfoBadge icon={<LocationIcon />}>{content.location}</InfoBadge>
+            {content.languages.map((language) => (
+              <InfoBadge
+                key={language.name}
+                icon={<Languages aria-hidden="true" className="size-3.5" />}
+              >
+                {language.name} - {language.level}
+              </InfoBadge>
+            ))}
           </div>
 
           <div className="flex flex-col gap-6 lg:col-start-1 lg:row-start-2">
@@ -103,7 +141,7 @@ export function AboutMe({ content }: Props) {
               width={420}
               height={420}
               sizes="(min-width: 1024px) 360px, 100vw"
-              className="aspect-square w-full object-cover grayscale-10 transition-transform duration-300 ease-out group-hover/image:scale-[1.018] motion-reduce:transition-none motion-reduce:group-hover/image:scale-100 lg:w-85"
+              className="aspect-square w-full object-cover grayscale-10 transition-transform duration-300 ease-out group-hover/image:scale-[1.15] motion-reduce:transition-none motion-reduce:group-hover/image:scale-100 lg:w-85"
             />
           </div>
         </div>

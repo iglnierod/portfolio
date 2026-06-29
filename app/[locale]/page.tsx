@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { Hero } from "@/components/sections/hero";

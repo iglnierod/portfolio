@@ -37,8 +37,13 @@ const dictionaries = {
     },
     aboutMe: {
       title: "Sobre mí",
-      openToWork: "Disponible para trabajar",
-      notOpenToWork: "No disponible actualmente",
+      openToWork: "Disponible",
+      notOpenToWork: "No disponible",
+      location: "Santiago de Compostela",
+      languages: [
+        { name: "Español & Gallego", level: "Nativo" },
+        { name: "Inglés", level: "C1" },
+      ],
       paragraphs: [
         "Soy Rodrigo Iglesias, desarrollador web full-stack enfocado en crear productos útiles, claros y preparados para crecer.",
         "Trabajo de extremo a extremo: desde interfaces limpias y accesibles hasta APIs REST, autenticación, modelos de datos y despliegues. Me interesa especialmente transformar necesidades reales en soluciones prácticas y mantenibles.",
@@ -356,6 +361,11 @@ const dictionaries = {
       title: "About me",
       openToWork: "Open to work",
       notOpenToWork: "Not available right now",
+      location: "Santiago de Compostela",
+      languages: [
+        { name: "Spanish", level: "Native" },
+        { name: "English", level: "C1" },
+      ],
       paragraphs: [
         "I'm Rodrigo Iglesias, a full-stack web developer focused on building useful, clear products that are ready to grow.",
         "I work end to end: from clean, accessible interfaces to REST APIs, authentication, data models, and deployments. I especially enjoy turning real needs into practical, maintainable solutions.",
