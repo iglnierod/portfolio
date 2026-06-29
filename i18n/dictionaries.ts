@@ -292,6 +292,31 @@ const dictionaries = {
         },
       ],
     },
+    contact: {
+      title: "Construyamos algo juntos",
+      description:
+        "Si tienes una idea, un proyecto o simplemente quieres conectar, mi correo es el mejor punto de partida.",
+      email: "iglnierod@gmail.com",
+      linkedInLabel: "LinkedIn",
+      linkedInPrefix: "O conecta conmigo en",
+    },
+    footer: {
+      copyright: "Todos los derechos reservados.",
+      linksLabel: "Enlaces de contacto",
+      links: {
+        email: "Email",
+        github: "GitHub",
+        linkedin: "LinkedIn",
+      },
+    },
+    languages: {
+      title: "Idiomas",
+      spanish: "Español",
+      english: "Inglés",
+      galician: "Gallego",
+      native: "Nativo",
+      advanced: "C1 - Avanzado",
+    },
   },
   en: {
     metadata: {
@@ -582,6 +607,31 @@ const dictionaries = {
           ],
         },
       ],
+    },
+    contact: {
+      title: "Let's build something together",
+      description:
+        "If you have an idea, a project, or just want to connect, email is the best place to start.",
+      email: "iglnierod@gmail.com",
+      linkedInLabel: "LinkedIn",
+      linkedInPrefix: "Or connect with me on",
+    },
+    footer: {
+      copyright: "All rights reserved.",
+      linksLabel: "Contact links",
+      links: {
+        email: "Email",
+        github: "GitHub",
+        linkedin: "LinkedIn",
+      },
+    },
+    languages: {
+      title: "Languages",
+      spanish: "Spanish",
+      english: "English",
+      galician: "Galician",
+      native: "Native",
+      advanced: "C1 - Advanced",
     },
   },
 } as const;
