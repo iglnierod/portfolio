@@ -552,7 +552,7 @@ const dictionaries = {
           type: "Higher Vocational Training",
           startDate: "September 2024",
           endDate: "December 2025",
-          averageGrade: "--/10",
+          averageGrade: "8,5/10",
           body: [
             "Specialized training in web application development, combining frontend, backend, databases, and service deployment.",
             "Development of dynamic web interfaces, reusable components, forms, and applications connected to services and APIs.",
@@ -590,7 +590,7 @@ const dictionaries = {
           type: "Higher Vocational Training",
           startDate: "September 2022",
           endDate: "June 2024",
-          averageGrade: "--/10",
+          averageGrade: "8,92/10",
           body: [
             "Training focused on multiplatform application development, object-oriented programming, databases, and business logic.",
             "Development of applications connected to databases, working with data models, SQL queries, and CRUD operations.",

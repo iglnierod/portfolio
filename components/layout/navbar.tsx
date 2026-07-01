@@ -36,7 +36,7 @@ export function NavBar({ content, locale }: NavBarProps) {
         aria-hidden="true"
         className="bg-background/70 max-w-8xl pointer-events-none fixed top-0 left-1/2 z-40 h-24 w-[calc(100%+2rem)] -translate-x-1/2 mask-[radial-gradient(ellipse_70%_100%_at_50%_0%,black_0%,black_72%,transparent_100%)] backdrop-blur-md sm:w-[calc(100%+4rem)]"
       />
-      <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-1rem)] max-w-5xl -translate-x-1/2 rounded-lg border border-zinc-200 bg-white/75 p-3 backdrop-blur-xl backdrop-saturate-150 sm:w-[calc(100%-2rem)] sm:px-4 dark:border-zinc-800 dark:bg-zinc-950/70">
+      <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-1rem)] max-w-6xl -translate-x-1/2 rounded-lg border border-zinc-200 bg-white/75 p-3 backdrop-blur-xl backdrop-saturate-150 sm:w-[calc(100%-2rem)] sm:px-4 dark:border-zinc-800 dark:bg-zinc-950/70">
         <div className="relative flex w-full items-center justify-between gap-3">
           <div className="flex shrink-0 items-center gap-2">
             <button
